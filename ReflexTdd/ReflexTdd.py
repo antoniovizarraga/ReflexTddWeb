@@ -4,7 +4,7 @@ import reflex as rx
 
 from rxconfig import config
 
-external = False
+external = True
 
 
 class State(rx.State):
@@ -24,10 +24,12 @@ def index() -> rx.Component:
                 ),
                 rx.list.unordered(
                     rx.list.item(
-                        rx.link("Buscadores", id="buscadores", href="/buscadores", is_external=external)
+                        rx.link("Buscadores", id="buscadores", href="/buscadores", is_external=False)
                     ),
+                    # He tenido que llamar la página: "/redessociales" en vez de: "/redes_sociales" porque si no, no encuentra la página y me da error 404.
+                    # Tampoco admite guiones porque Reflex interpreta los guiones como otra cosa.
                     rx.list.item(
-                        rx.link("Redes sociales", id="redes", href="/redes_sociales", is_external=external)
+                        rx.link("Redes sociales", id="redes", href="/redessociales", is_external=False)
                     ),
                     list_style_type="none",
 
@@ -70,7 +72,7 @@ def buscadores():
         )
     )
 
-def redes_sociales():
+def redessociales():
     return rx.box(
         rx.center(
             rx.vstack(
@@ -105,4 +107,4 @@ def redes_sociales():
 app = rx.App()
 app.add_page(index)
 app.add_page(buscadores)
-app.add_page(redes_sociales)
+app.add_page(redessociales)
