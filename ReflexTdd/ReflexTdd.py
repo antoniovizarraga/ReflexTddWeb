@@ -4,7 +4,7 @@ import reflex as rx
 
 from rxconfig import config
 
-from ReflexTdd.pages import index, buscadores, redes_sociales
+from ReflexTdd.pages import index, buscadores, redes_sociales, formulario
 
 external = True
 
